@@ -197,8 +197,11 @@ function flushiptables()
 ## -------------
 function backup_polipo()
 {
-    mv /etc/polipo/config $backup_path/polipo.bak
-	loadstatus " [+] Backed-up Polipo" "OK" "valid"
+	if [ ! -f "/etc/polipo/config" ];
+	then
+	    mv /etc/polipo/config $backup_path/polipo.bak
+		loadstatus " [+] Backed-up Polipo" "OK" "valid"
+	fi
 }
 
 ## Backup TORRC
