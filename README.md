@@ -7,6 +7,8 @@ Script to redirect all traffic through TOR Network including DNS queries for ano
 #### INSTALLATION
 
 ```bash
+sudo pacman -Syyu
+sudo pacman -S macchanger polipo tor
 cd /opt/
 sudo git clone https://github.com/neoslabdev/torbridge
 sudo chmod +x /opt/torbridge/torbridge
