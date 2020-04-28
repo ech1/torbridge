@@ -27,12 +27,12 @@ usage: torbridge [-c --command] or [-h --help] or [-v --version]
   -v      - Display current version of TorBridge
 
   Commands:${text_main}
-  start          - Start redirecting all traffic through Tor
-  stop           - Stop redirecting all traffic through Tor
-  status         - Get Tor service status
-  restart        - Restart Tor and traffic rules
-  showip         - Display Tor IP address
-  switchid       - Switch Tor identity
+  start          - Start redirecting all traffic through TOR
+  stop           - Stop redirecting all traffic through TOR
+  status         - Get TOR service status
+  restart        - Restart TOR and traffic rules
+  showip         - Display TOR IP address
+  switchid       - Switch TOR identity
   changemac      - Change mac addresses of all interfaces
   revertmac      - Revert mac addresses of all interfaces
 ```

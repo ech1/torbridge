@@ -118,12 +118,12 @@ function usage
 	echo "  -v      - Display current version of TorBridge"
 	echo
 	echo -e "${text_bold}Commands:${text_main}"
-    echo "  start          - Start redirecting all traffic through Tor"
-    echo "  stop           - Stop redirecting all traffic through Tor"
-    echo "  status         - Get Tor service status"
-    echo "  restart        - Restart Tor and traffic rules"
-    echo "  showip         - Display Tor IP address"
-    echo "  switchid       - Switch Tor identity"
+    echo "  start          - Start redirecting all traffic through TOR"
+    echo "  stop           - Stop redirecting all traffic through TOR"
+    echo "  status         - Get TOR service status"
+    echo "  restart        - Restart TOR and traffic rules"
+    echo "  showip         - Display TOR IP address"
+    echo "  switchid       - Switch TOR identity"
     echo "  changemac      - Change mac addresses of all interfaces"
     echo "  revertmac      - Revert mac addresses of all interfaces"
 	echo
