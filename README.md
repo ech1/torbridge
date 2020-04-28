@@ -26,7 +26,7 @@ usage: torbridge [-c --command] or [-h --help] or [-v --version]
   -h      - Display this help menu
   -v      - Display current version of TorBridge
 
-  Commands:${text_main}
+  Commands:
   start          - Start redirecting all traffic through TOR
   stop           - Stop redirecting all traffic through TOR
   status         - Get TOR service status
