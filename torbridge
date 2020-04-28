@@ -28,19 +28,19 @@ website="neoslab.com"
 ## ----------------------
 backup_path="/tmp/torbridge"
 
-## TOR Exclude CIDR
+## Tor Exclude CIDR
 ## ----------------
 tor_cidr="192.168.0.0/16 172.16.0.0/12 10.0.0.0/8"
 
-## TOR UUID
+## Tor UUID
 ## --------
 tor_uuid="tor"
 
-## TOR Port
+## Tor Port
 ## --------
 tor_port="9040"
 
-## TOR DNS
+## Tor DNS
 ## -------
 tor_dns="9053"
 
@@ -118,12 +118,12 @@ function usage
 	echo "  -v      - Display current version of TorBridge"
 	echo
 	echo -e "${text_bold}Commands:${text_main}"
-    echo "  start          - Start redirecting all traffic through TOR"
-    echo "  stop           - Stop redirecting all traffic through TOR"
-    echo "  status         - Get TOR service status"
-    echo "  restart        - Restart TOR and traffic rules"
-    echo "  showip         - Display TOR IP address"
-    echo "  switchid       - Switch TOR identity"
+    echo "  start          - Start redirecting all traffic through Tor"
+    echo "  stop           - Stop redirecting all traffic through Tor"
+    echo "  status         - Get Tor service status"
+    echo "  restart        - Restart Tor and traffic rules"
+    echo "  showip         - Display Tor IP address"
+    echo "  switchid       - Switch Tor identity"
     echo "  changemac      - Change mac addresses of all interfaces"
     echo "  revertmac      - Revert mac addresses of all interfaces"
 	echo
@@ -173,7 +173,7 @@ function backupdir()
     fi
 }
 
-## Check if TOR Started
+## Check if Tor Started
 ## --------------------
 function checkstatus()
 {
@@ -204,12 +204,12 @@ function backup_polipo()
 	fi
 }
 
-## Backup TORRC
+## Backup TorRC
 ## ------------
 function backup_torrc()
 {
     mv /etc/tor/torrc $backup_path/torrc.bak
-	loadstatus " [+] Backed-up TORRC" "OK" "valid"
+	loadstatus " [+] Backed-up TorRC" "OK" "valid"
 }
 
 ## Backup Resolv
@@ -248,7 +248,7 @@ function restore_polipo()
     fi
 }
 
-## Restore TORRC
+## Restore TorRC
 ## -------------
 function restore_torrc()
 {
@@ -256,7 +256,7 @@ function restore_torrc()
 	then
         rm -f /etc/tor/torrc
         mv $backup_path/torrc.bak /etc/tor/torrc
-        loadstatus " [+] Restored TORRC" "OK" "valid"
+        loadstatus " [+] Restored TorRC" "OK" "valid"
     fi
 }
 
@@ -353,7 +353,7 @@ function build_polipo()
 	loadstatus " [+] Polipo configured" "OK" "valid"
 }
 
-## Build TORRC Config
+## Build TorRC Config
 ## ------------------
 function build_torrc()
 {
@@ -378,7 +378,7 @@ function build_torrc()
     echo 'UseEntryGuards 1' | tee -a /etc/tor/torrc >/dev/null 2>&1
     echo 'EnforceDistinctSubnets 1' | tee -a /etc/tor/torrc >/dev/null 2>&1
 	chmod 644 /etc/tor/torrc
-	loadstatus " [+] TOR Network configured" "OK" "valid"
+	loadstatus " [+] Tor Network configured" "OK" "valid"
 }
 
 ## Start Service
@@ -428,7 +428,7 @@ function apply_iptables_rules()
     iptables -t nat -A OUTPUT -p tcp -d 10.192.0.0/10 -j REDIRECT --to-ports $tor_port
     iptables -t nat -A OUTPUT -p udp -d 10.192.0.0/10 -j REDIRECT --to-ports $tor_port
 
-	## Exclude TOR CIDR
+	## Exclude Tor CIDR
 	## ----------------
     for NET in $tor_cidr 127.0.0.0/9 127.128.0.0/10;
 	do
@@ -436,7 +436,7 @@ function apply_iptables_rules()
         iptables -A OUTPUT -d "$NET" -j ACCEPT
     done
 
-    ## Redirect all other output through TOR
+    ## Redirect all other output through Tor
 	## -------------------------------------
     iptables -t nat -A OUTPUT -p tcp --syn -j REDIRECT --to-ports $tor_port
     iptables -t nat -A OUTPUT -p udp -j REDIRECT --to-ports $tor_port
@@ -446,7 +446,7 @@ function apply_iptables_rules()
 	## --------------------------------------
     iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    ## Allow only TOR output
+    ## Allow only Tor output
 	## ---------------------
     iptables -A OUTPUT -m owner --uid-owner $tor_uuid -j ACCEPT
     iptables -A OUTPUT -j REJECT
@@ -629,7 +629,7 @@ function switchid()
 	    sleep 1
 	    service_start tor &>"/dev/null"
 	    service_start polipo &>"/dev/null"
-	    loadstatus " [+] TOR identity switched" "OK" "valid"
+	    loadstatus " [+] Tor identity switched" "OK" "valid"
 
 		## Display IP Address
 		## ------------------
@@ -707,7 +707,7 @@ function torbridge_start()
 		## --------------------
 	    backup_polipo
 
-		## Backup TOR Config
+		## Backup Tor Config
 		## -----------------
 	    backup_torrc
 
@@ -731,7 +731,7 @@ function torbridge_start()
 		## -------------------
 	    build_polipo
 
-	    ## Build TOR Config
+	    ## Build Tor Config
 		## ----------------
 	    build_torrc
 
@@ -756,7 +756,7 @@ function torbridge_start()
 
 		## Return Notice
 		## -------------
-		loadstatus " [+] All traffic is being redirected through TOR" "OK" "valid"
+		loadstatus " [+] All traffic is being redirected through Tor" "OK" "valid"
 	    touch $backup_path/started
 	fi
 }
@@ -790,7 +790,7 @@ function torbridge_stop()
 		## ---------------------
 	    restore_polipo
 
-	    ## Restore TOR Config
+	    ## Restore Tor Config
 		## ------------------
 	    restore_torrc
 
@@ -804,7 +804,7 @@ function torbridge_stop()
 
 		## Return Notice
 		## -------------
-		loadstatus " [+] Traffic is not redirected through TOR" "OK" "valid"
+		loadstatus " [+] Traffic is not redirected through Tor" "OK" "valid"
 	    rm -f $backup_path/started
 	fi
 }
@@ -825,9 +825,9 @@ function torbridge_status()
 
 	if [[ "${service_tor}" == "active" ]];
 	then
-        loadstatus " [+] TOR service is: ${service_tor}" "OK" "valid"
+        loadstatus " [+] Tor service is: ${service_tor}" "OK" "valid"
     else
-        loadstatus " [*] TOR service is: ${service_tor}" "!!" "issue"
+        loadstatus " [*] Tor service is: ${service_tor}" "!!" "issue"
     fi
 
 	if [[ "${service_polipo}" == "active" ]];
