@@ -7,7 +7,9 @@ Script to redirect all traffic through TOR Network including DNS queries for ano
 #### INSTALLATION
 
 ```bash
-wget https://raw.githubusercontent.com/ech1/torbridge/master/install.sh -O - | bash
+wget https://raw.githubusercontent.com/ech1/torbridge/master/install.sh 
+sudo chmod +x install.sh
+./install.sh
 ```
 
 ```bash
