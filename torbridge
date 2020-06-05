@@ -48,7 +48,7 @@ tor_dns="9053"
 ## -----------
 function showbanner()
 {
-	clear
+	
 	echo -e "${color_d9534f}                  _               _       _ _       ${color_revert}"
 	echo -e "${color_d9534f}    __ _ _ __ ___| |__  ___ _ __ | | ___ (_) |_     ${color_revert}"
 	echo -e "${color_d9534f}   / _' | '__/ __| '_ \/ __| '_ \| |/ _ \| | __|    ${color_revert}"
@@ -110,7 +110,7 @@ loadstatus()
 ## -------------
 function usage
 {
-	clear
+	
     echo "usage: torbridge [-c --command] or [-h --help] or [-v --version]"
 	echo
 	echo "  -c      - Followed by the command to be executed by the script"
@@ -852,7 +852,7 @@ then
 else
 	if [ "$1" == "--command" -o "$1" == "-c" ];
 	then
-		clear
+		
 		showbanner
 		backupdir
 
