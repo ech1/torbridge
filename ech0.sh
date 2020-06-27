@@ -17,6 +17,7 @@ do
     echo '2) Webbrowsing - Random       (ProtonVPN TCP 443)'
     echo '3) Webbrowsing - Fastest      (ProtonVPN TCP 443)'
     echo '4) Invisible Listener only'
+    echo '5) TORIFY THE SYSTEM'
     echo '9) Allow Everything           /!\ DANGEROUS /!\'
     echo ''
     read choice
@@ -102,6 +103,18 @@ do
             echo '[+] Press enter to leave Invisible Listener Mode'
             read ech0
             ;;
+	5)
+	    echo '[+] TORBRIDGE MODE'
+	    sudo torbridge -c status
+	    sudo torbridge -c changemac
+	    sudo torbridge -c start
+	    sudo torbridge -c status
+	    echo '[+] Press ENTER when you are done.'
+	    read ech0
+	    sudo torbridge -c stop
+	    sudo torbridge -c revertmac
+	    sleep 10
+	    ;;
         9)
             echo '[+] YOU ARE UNPROTECTED PRESS ENTER TO GO BACK TO SAFETY !'
             read ech0
