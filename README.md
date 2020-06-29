@@ -1,7 +1,7 @@
 # TORBRIDGE
 * * *
 
-![alt text](onion.png)
+![alt text](onionplusarch.png)
 
 #### DESCRIPTION
 
