@@ -8,13 +8,15 @@ Script to redirect all traffic through TOR Network including DNS queries for ano
 
 * * *
 
-#### INSTALLATION
+#### INSTALLATION (Automatic)
 
 ```bash
 wget https://raw.githubusercontent.com/ech1/torbridge/master/install.sh 
 sudo chmod +x install.sh
 ./install.sh
 ```
+
+#### INSTALLATION (Manual)
 
 ```bash
 sudo pacman -Syyu
@@ -23,6 +25,12 @@ cd /opt/
 sudo git clone https://github.com/ech1/torbridge
 sudo chmod +x /opt/torbridge/torbridge
 sudo ln -s /opt/torbridge/torbridge /usr/local/bin/torbridge
+
+cd torbridge
+sudo cp torbridge.service /etc/systemd/system/
+sudo systemctl start torbridge
+sudo systemctl status torbridge
+sudo systemctl enable torbridge
 ```
 
 * * *
