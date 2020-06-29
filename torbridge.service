@@ -1,6 +1,6 @@
 [Unit]
 Description = Tor routing the system by default
-After = network.target
+After = network-online.target
 
 [Service]
 ExecStart = /opt/torbridge/torbridge -c start
