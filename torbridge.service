@@ -1,0 +1,9 @@
+[Unit]
+Description = Tor routing the system by default
+After = network.target
+
+[Service]
+ExecStart = /opt/torbridge/torbridge -c start
+
+[Install]
+WantedBy = multi-user.target

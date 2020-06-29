@@ -2,7 +2,6 @@
 sudo iptables -F
 while :
 do
-    clear
     sudo iptables -F
     sudo iptables -A INPUT -s 127.0.0.1 -j ACCEPT
     sudo iptables -A INPUT -s 127.0.1.1 -j ACCEPT
@@ -24,8 +23,9 @@ do
 	    sudo torbridge -c changemac
 	    sudo torbridge -c start
 	    sudo torbridge -c status
-	    echo '[+] Press ENTER when you are done.'
-	    read ech0
-	    sudo torbridge -c stop
-	    sudo torbridge -c revertmac
+	echo '[+] Press ENTER to stop'
+	read choice
+	sudo torbridge -c stop
+	sudo torbridge -c revertmac
+	sudo torbridge -c status
 done
