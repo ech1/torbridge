@@ -1,3 +1,5 @@
+![alt text](https://raw.githubusercontent.com/ech1/torbridge/master/onion.png)
+
 #### DESCRIPTION
 
 Script to redirect all traffic through TOR Network including DNS queries for anonymizing entire system based on [Torctl](https://github.com/BlackArch/torctl) which is available on **BlackArch** but few optimizations were made and Polipo has added to minimize latency.
