@@ -3,9 +3,8 @@ Description = Tor routing the system by default
 After = network-online.target
 
 [Service]
-ExecStartPre = /opt/torbridge/torbridge -c changemac
 ExecStart = /opt/torbridge/torbridge -c start
-ExecStartPost = /opt/torbridge/torbridge -c switchid
+ExecStartPost = /opt/torbridge/torbridge -c changemac
 TimeoutSec = 30
 Restart = on-failure
 
