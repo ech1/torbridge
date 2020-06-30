@@ -4,6 +4,8 @@ After = network-online.target
 
 [Service]
 ExecStart = /opt/torbridge/torbridge -c start
+TimeoutSec = 30
+Restart = on-failure
 
 [Install]
 WantedBy = multi-user.target
