@@ -7,7 +7,12 @@
 
 Torbridge is a script to redirect all traffic through the TOR Network including DNS queries in order to anonymize entire system based on [Torctl](https://github.com/BlackArch/torctl) which is available on **BlackArch** but since neither the original version, nor the guy who made "a few optimizations" didn't satisfy me so i decided to fork it, and make it so that you can run an install script, which will make sure that everytime you log into your machine, there will be a service running to ensure your machine stays connected to the tor network.
 
-The goal here is to run a script, for the arch linux user, which will then ensure that the system itself will always be using the tor network in order to mimick the TAILS operating system behavior.
+The goal here is to run a script, for the arch linux user, which will then ensure that the system itself will always be using the tor network in order to mimick the TAILS operating system behavior(having tor activated by default)
+
+you can verify it is working on 
+
+https://dnsleaktest.com
+https://ipleak.net
 
 * * *
 
