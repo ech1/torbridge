@@ -9,7 +9,7 @@ Torbridge is a script to redirect all traffic through the TOR Network including 
 
 The goal here is to run a script, for the arch linux user, which will then ensure that the system itself will always be using the tor network in order to mimick the TAILS operating system behavior(having tor activated by default)
 
-you can verify it is working on 
+You can verify if it is working by visiting the following links :
 
 https://dnsleaktest.com
 
