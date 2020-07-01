@@ -12,6 +12,7 @@ The goal here is to run a script, for the arch linux user, which will then ensur
 you can verify it is working on 
 
 https://dnsleaktest.com
+
 https://ipleak.net
 
 * * *
