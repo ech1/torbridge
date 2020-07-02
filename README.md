@@ -11,6 +11,8 @@ The goal here is to run a script, for the arch linux user, which will then ensur
 
 You can verify if it is working by visiting the following links :
 
+https://check.torproject.org/
+
 https://dnsleaktest.com
 
 https://ipleak.net
